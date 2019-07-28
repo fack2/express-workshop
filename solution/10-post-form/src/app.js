@@ -8,6 +8,7 @@ app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
 
 // parse incoming json
 app.use(express.json());
+app.use(express.urlencoded());
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 

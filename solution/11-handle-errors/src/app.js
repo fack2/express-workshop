@@ -7,6 +7,7 @@ const app = express();
 app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
 
 app.use(express.json());
+app.use(express.urlencoded());
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
@@ -27,7 +28,7 @@ app.use((req, res) => {
 });
 
 // create a 500 middleware sending the '500.html' file
-app.use((err, req, res, next) => {
+app.use((req, res) => {
   res.status(500).sendFile(path.join(__dirname, '..', 'public', '500.html'));
 });
 
