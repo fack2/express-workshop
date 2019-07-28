@@ -2,18 +2,15 @@
 
 ![express logo](./images/express-logo.png)
 
-The workshop is composed of a number of steps with source files included in the individual folders. Before we start, let's go through some information about what Express is and why we use it.
 
 
-## Workshop tasks
-Let's code along the solutions to the following tasks. A global installation of `nodemon` may be helpful when completing the tasks: `npm i -g nodemon`
+## Express Demonstration
 
 1. **Hello world**
     - Task
       - Setup an Express server serving `Hello world` on port 3000
     - Notes
-      - Go to Chrome Dev Tools -> Network; and check if the status code is `200` and if the content type is `text/html`
-      - Go to Chrome Dev Tools -> Elements; and find `Hello world` in the DOM tree
+      - Go to Chrome Dev Tools -> Elements; and check the response in the DOM tree
 
 1. **Hello html**
     - Task
@@ -40,6 +37,8 @@ Let's code along the solutions to the following tasks. A global installation of 
 1. **One route to cities**
     - Task
       - Serve `Hello [city name]` (e.g. `Hello London`) on the `/london`, `/nazareth`, `/gaza` paths. Use only one route handler to handle the requests.
+    - Notes
+      - in the browser show that this now works for any city
 
 1. **new-york newyork**
     - Task
@@ -53,14 +52,16 @@ Let's code along the solutions to the following tasks. A global installation of 
     - Notes
       - Middleware and routing functions are called in the order that they are declared. For some middleware the order is important (for example if session middleware depends on cookie middleware, then the cookie handler must be added first). It is almost always the case that middleware is called before setting routes, or your route handlers will not have access to functionality added by your middleware.
       - The **only** difference between a middleware function and a route handler callback is that middleware functions have a **third argument `next`**, which middleware functions are expected to call if they do not complete the request cycle
+      - show that if you remove all next() then the app hangs on the first middleware
 
 1. **Morgan logger middleware**
     - Task
       - Add a `morgan` middleware to log standard Apache combined server log output
       - Save logs in the `access.log` file in the `logs-demo` folder
-      - Compare the server logs by trying two different browsers
+     - Notes
+          - Compare the server logs by trying two different browsers
 
-1. **Static files**
+1. **Static files** - **Students start coding along**
     - Task
       - Serve static files from the `public` folder
 
@@ -75,9 +76,9 @@ Let's code along the solutions to the following tasks. A global installation of 
 
 1. **Prepare for production**
     - Tasks
-      - Set port number
-      - Disable `Powered by express` header' (check headers before and after in Chrome Dev Tools -> Network);
-      - Enable compression
+      - Set port number with process.env.PORT with a backup. 
+      - Disable `Powered by express` header' (check headers before and after in Chrome Dev Tools -> Network); (this is to give hackers less information about the code)
+      - Enable compression (look at DOMContentLoaded to see the increased speed)
       - Let browser know to cache static resources for 30 days.
 
 1. **Split into modules**
@@ -99,10 +100,6 @@ Let's code along the solutions to the following tasks. A global installation of 
                 └── index.js
         ```
 
-
-## Tips
-
-- You can run `nodemon` in a quiet mode with: `nodemon app.js -q`
 
 
 ## Resources
