@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
-const bodyParser = require('body-parser');
+
 // import compression module
 const compression = require('compression');
 
@@ -18,8 +18,7 @@ app.use(compression());
 
 app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
 
 // set cache age
 app.use(
